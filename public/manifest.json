@@ -1,0 +1,8 @@
+{
+  "short_name": "Donors Choose Map",
+  "name": "Donors Choose Map",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
