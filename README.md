@@ -23,6 +23,12 @@ Web application using React. Shows Donor Choose proposals based on your location
 2. Run `yarn start`
 
 ## Assumptions
+- Limited zipcode to 5 numbers ranging from 0-9 assuming we only want US zipcodes.
+- Since the the codebase is pretty small, I opted to use string literals for action types. In larger settings, it'd be better to abstract it out into a separate module.
+
+## To-do
+- Clean up directories
+- Give credits to http://jasonwatmore.com/
 
 ## Notes
 - Used create-react-app for boilerplate
