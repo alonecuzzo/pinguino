@@ -1,22 +1,47 @@
+import { service } from './service';
+
 //Action Types
-export const SIGNUP_USER = 'SIGNUP_USER';
-export const SIGNUP_USER_REQUEST = 'SIGNUP_USER_REQUEST';
-export const SIGNUP_USER_SUCCESS = 'SIGNUP_USER_SUCCESS';
-export const SIGNUP_USER_FAILURE = 'SIGNUP_USER_FAILURE';
+export const actionType = {
+  SIGNUP_USER_REQUEST: 'SIGNUP_USER_REQUEST',
+  SIGNUP_USER_SUCCESS: 'SIGNUP_USER_SUCCESS',
+  SIGNUP_USER_FAILURE: 'SIGNUP_USER_FAILURE'
+}
 
 //Action Creators
-export function signupUserRequest(userId) {
+export const actions = {
+  signup,
+  request,
+  success,
+  failure
+};
+
+function signup(username, email, zipcode) {
+  return dispatch => {
+    dispatch(request({ username }));
+    service.signup(username)
+      .then(
+        user => {
+          dispatch(success());
+        },
+        error => {
+          dispatch(failure());
+        }
+      );
+  }
+} 
+
+function request(userId) {
   return { 
-    type: SIGNUP_USER_REQUEST,
+    type: actionType.SIGNUP_USER_REQUEST,
     payload: {
       userId: userId
     }
   };
 }
 
-export function signupUserSuccess(userId, response) {
+function success(userId, response) {
   return { 
-    type: SIGNUP_USER_SUCCESS,
+    type: actionType.SIGNUP_USER_SUCCESS,
     payload: {
       userId: userId,
       response: response
@@ -24,9 +49,9 @@ export function signupUserSuccess(userId, response) {
   };
 }
 
-export function signupUserFailure() {
+function failure() {
   return { 
-    type: SIGNUP_USER_FAILURE,
+    type: actionType.SIGNUP_USER_FAILURE,
     payload: new Error(),
     error: true
   };
