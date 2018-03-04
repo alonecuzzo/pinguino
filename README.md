@@ -25,6 +25,7 @@ Web application using React. Shows Donor Choose proposals based on your location
 ## Assumptions
 - Limited zipcode to 5 numbers ranging from 0-9 assuming we only want US zipcodes.
 - Since the the codebase is pretty small, I opted to use string literals for action types. In larger settings, it'd be better to abstract it out into a separate module.
+- HTML form elements maintain their own state, but since we want React state to be the "source of truth" we'll use controller components. 
 
 ## To-do
 - Clean up directories
@@ -32,5 +33,12 @@ Web application using React. Shows Donor Choose proposals based on your location
 
 ## Notes
 - Used create-react-app for boilerplate
-- 
+
+## Execution
+03/04/18
+Goal: Signup form submission with user data stored in localstorage
+Start time: 3:00pm 
+Poms: 5
+Notes: 
+5:44pm: Got controlled components working. Do I even need redux? I think I wanted to use it to get real life experience with it. But the more I read and write this app, the less sure I am about its usefullness in this particular case. I wrote a reducer, but it's a little useless. Also, whats the difference between a reducer and an action creator? I think my knowledge gap is getting to me and slowing down the process. Do I need a Provider? How and where do I create the store? how do props get the dispatch function? what's the origin of the dispatch function?
 
