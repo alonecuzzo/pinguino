@@ -5,7 +5,7 @@ export function initializeMockBackend() {
   window.fetch = function(url, opts) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        if (url.endsWith('/users/signup') && opts.method === 'POST') {
+        if (url.endsWith('user/signup') && opts.method === 'POST') {
           let newUser = JSON.parse(opts.body);
           let duplicateUser = users.filter(user => { return user.email === newUser.email });
           let isDuplicateUser = duplicateUser.length;
