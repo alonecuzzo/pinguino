@@ -9,37 +9,37 @@ export const actionType = {
 
 //Action Creators
 export const actions = {
-  signup,
-  request,
-  success,
-  failure
+  signUp,
+  signUpRequest,
+  signUpSuccess,
+  signUpFailure
 };
 
-function signup(username, email, zipcode) {
+function signUp(user) {
   return dispatch => {
-    dispatch(request({ username }));
-    service.signup(username)
+    dispatch(actions.signUpRequest({ user }));
+    service.signUp(user)
       .then(
         user => {
-          dispatch(success());
+          dispatch(actions.signUpSuccess());
         },
         error => {
-          dispatch(failure());
+          dispatch(actions.signUpFailure());
         }
       );
   }
 } 
 
-function request(userId) {
+function signUpRequest(user) {
   return { 
     type: actionType.SIGNUP_USER_REQUEST,
     payload: {
-      userId: userId
+      username: user.name
     }
   };
 }
 
-function success(userId, response) {
+function signUpSuccess(userId, response) {
   return { 
     type: actionType.SIGNUP_USER_SUCCESS,
     payload: {
@@ -49,7 +49,7 @@ function success(userId, response) {
   };
 }
 
-function failure() {
+function signUpFailure() {
   return { 
     type: actionType.SIGNUP_USER_FAILURE,
     payload: new Error(),
