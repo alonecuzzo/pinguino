@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { SignupForm } from './SignupForm';
+import { SignUpForm } from './SignUpForm';
 import './App.css';
 
 class App extends Component {
   render() {
     return (
-      <SignupForm />
+      <SignUpForm />
     );
   }
 }
