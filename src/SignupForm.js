@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { actions } from './actions';
 
 class SignupForm extends React.Component {
   constructor(props) {
@@ -7,7 +9,8 @@ class SignupForm extends React.Component {
     this.state = {
       username: '',
       email: '',
-      zipcode: ''
+      zipcode: '',
+      submitted: false
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -16,6 +19,13 @@ class SignupForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
+
+    this.setState({ submitted: true });
+
+    const { username, email, zipcode } = this.state;
+    const { dispatch } = this.props;
+
+    dispatch(actions.signup(username, email, zipcode));
   }
 
   handleChange(event) {
@@ -24,15 +34,30 @@ class SignupForm extends React.Component {
   }
 
   render() {
+    const { registering } = this.props;
+    const { username, email, zipcode } = this.state;
+
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input type="text" placeholder="Name" name="username" value={this.state.username} onChange={this.handleChange} />
-        <input type="text" placeholder="Email" name="email" value={this.state.email} onChange={this.handleChange} />
-        <input type="text" pattern="[0-9]{5}"placeholder="Zipcode" name="zipcode" value={this.state.zipcode} onChange={this.handleChange} />
-        <button className="signupForm__button--primary">Signup</button>
-      </form>
+      <div>
+        <form onSubmit={this.handleSubmit}>
+          <input type="text" placeholder="Name" name="username" value={username} onChange={this.handleChange} />
+          <input type="text" placeholder="Email" name="email" value={email} onChange={this.handleChange} />
+          <input type="text" pattern="[0-9]{5}"placeholder="Zipcode" name="zipcode" value={zipcode} onChange={this.handleChange} />
+          <button className="signupForm__button--primary">Signup</button>
+        </form>
+        { registering &&
+          <div>Registering user</div>
+        }
+      </div>
     );
   }
 }
 
-export default SignupForm;
+function mapStateToProps(state) {
+  const { registering } = state;
+  return {
+    registering
+  };
+}
+const connectedSignupForm = connect(mapStateToProps)(SignupForm);
+export { connectedSignupForm as SignupForm };
