@@ -7,13 +7,10 @@ export function initializeMockBackend() {
       setTimeout(() => {
         if (url.endsWith('user/signup') && opts.method === 'POST') {
           let newUser = JSON.parse(opts.body);
-          let duplicateUser = users.filter(user => { return user.email === newUser.email });
-          let isDuplicateUser = duplicateUser.length;
-
-          if (isDuplicateUser) {
+          if (isDuplicateUser(newUser)) {
             reject('Email ' + newUser.email + ' is already in use');
           } else {
-            newUser.id = Math.max(...users.map(users => users.id)) + 1;
+            newUser.id = getUserId();
             users.push(newUser);
             localStorage.setItem('users', JSON.stringify(users));
 
@@ -31,4 +28,18 @@ export function initializeMockBackend() {
       }, 500);
     });
   }
+}
+
+function isDuplicateUser(newUser) {
+  const duplicateUser = users.filter(user => { return user.email === newUser.email });
+
+  return duplicateUser.length;
+}
+
+function getUserId(user) {
+  if (users.length) {
+    return  Math.max(...users.map(users => users.id)) + 1;
+  } 
+
+  return 1;
 }

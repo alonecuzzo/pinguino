@@ -31,6 +31,7 @@ function signUp(user) {
 } 
 
 function signUpRequest(user) {
+    console.log('action request');
   return { 
     type: actionType.SIGNUP_USER_REQUEST,
     payload: {
@@ -40,6 +41,7 @@ function signUpRequest(user) {
 }
 
 function signUpSuccess(userId, response) {
+    console.log('action success');
   return { 
     type: actionType.SIGNUP_USER_SUCCESS,
     payload: {
@@ -50,6 +52,7 @@ function signUpSuccess(userId, response) {
 }
 
 function signUpFailure() {
+    console.log('action fail');
   return { 
     type: actionType.SIGNUP_USER_FAILURE,
     payload: new Error(),
