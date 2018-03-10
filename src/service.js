@@ -1,5 +1,6 @@
 export const service = {
-  signUp
+  signUp,
+  getUsers
 };
 
 function signUp(user) {
@@ -17,3 +18,12 @@ function signUp(user) {
   });
 }
 
+function getUsers() {
+  const requestOpts = {
+    method: 'GET'
+  };
+
+  return fetch('users', requestOpts).then((response) => {
+    return response.json();
+  });
+}

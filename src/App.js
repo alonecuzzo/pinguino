@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { SignUpForm } from './SignUpForm';
-import UserListPage from './UserListPage';
+import { UserListPage } from './UserListPage';
 import './App.css';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 class App extends Component {
   render() {

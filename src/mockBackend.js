@@ -7,6 +7,7 @@ export function initializeMockBackend() {
       setTimeout(() => {
         if (url.endsWith('user/signup') && opts.method === 'POST') {
           let newUser = JSON.parse(opts.body);
+
           if (isDuplicateUser(newUser)) {
             reject('Email ' + newUser.email + ' is already in use');
           } else {
@@ -21,6 +22,11 @@ export function initializeMockBackend() {
           }
 
           return;
+        } else if (url.endsWith('users') && opts.method === 'GET') {
+          resolve({ 
+            ok: true, 
+            json: () => users 
+          });
         }
 
         originalFetch(url, opts).then(response => resolve(response));
@@ -32,7 +38,6 @@ export function initializeMockBackend() {
 
 function isDuplicateUser(newUser) {
   const duplicateUser = users.filter(user => { return user.email === newUser.email });
-
   return duplicateUser.length;
 }
 
