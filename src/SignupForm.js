@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { actions } from './actions';
+import { Link } from 'react-router-dom';
 
 class SignUpForm extends React.Component {
   constructor(props) {
@@ -20,8 +21,6 @@ class SignUpForm extends React.Component {
   }
 
   handleSubmit(event) {
-    event.preventDefault();
-
     this.setState({ submitted: true });
 
     const newUser = this.state.user;
@@ -42,11 +41,11 @@ class SignUpForm extends React.Component {
 
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
+        <form>
           <input type="text" placeholder="Name" name="name" value={name} onChange={this.handleChange} />
           <input type="text" placeholder="Email" name="email" value={email} onChange={this.handleChange} />
           <input type="text" pattern="[0-9]{5}"placeholder="Zipcode" name="zipcode" value={zipcode} onChange={this.handleChange} />
-          <button className="signUpForm__button--primary">Signup</button>
+          <Link to="/users" onClick={this.handleSubmit}>Signup</Link>
         </form>
         { registering &&
           <div>Registering user</div>
@@ -63,4 +62,5 @@ function mapStateToProps(state) {
   };
 }
 const connectedSignUpForm = connect(mapStateToProps)(SignUpForm);
+
 export { connectedSignUpForm as SignUpForm };
