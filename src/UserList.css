@@ -5,9 +5,8 @@
 .user-item {
   display: flex;
   text-decoration: none;
-  border: 1px solid black;
+  border: 1px solid #aaa;
   margin: 0 0 10px;
-  background-color: white;
 }
 
 .user-item__content {
@@ -30,8 +29,8 @@
 .user-item__avatar {
   padding: 10px;
   border-radius: 50%;
-  border: 1px solid red;
-  background-color: red;
+  border: 1px solid #ef5f3c;
+  background-color: #ef5f3c;
   color: white;
   margin: 0 10px 0 0;
 }

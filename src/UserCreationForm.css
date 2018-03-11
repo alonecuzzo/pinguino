@@ -21,9 +21,9 @@
 .user-creation--button {
   text-decoration: none;
   padding: 10px;
-  border: 1px solid red;
+  border: 1px solid #ef5f3c;
   color: white;
-  background: red;
+  background: #ef5f3c;
   text-align: center;
   font-weight: 700;
   text-transform: uppercase;
