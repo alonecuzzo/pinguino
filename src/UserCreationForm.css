@@ -1,0 +1,32 @@
+.user-creation {
+  display: flex;
+  grid-area: main;
+  justify-content: center;
+}
+
+.user-creation--form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 400px;
+}
+
+.user-creation--field {
+  padding: 10px;
+  font-size: 14px;
+  margin: 0 0 15px;
+  border: none;
+}
+
+.user-creation--button {
+  text-decoration: none;
+  padding: 10px;
+  border: 1px solid red;
+  color: white;
+  background: red;
+  text-align: center;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+

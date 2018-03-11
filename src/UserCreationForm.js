@@ -2,8 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { actions } from './actions';
 import { Link } from 'react-router-dom';
+import './UserCreationForm.css';
 
-class SignUpForm extends React.Component {
+class UserCreationForm extends React.Component {
   constructor(props) {
     super(props);
 
@@ -40,12 +41,12 @@ class SignUpForm extends React.Component {
     const { name, email, zipcode } = this.state.user;
 
     return (
-      <div>
-        <form>
-          <input type="text" placeholder="Name" name="name" value={name} onChange={this.handleChange} />
-          <input type="text" placeholder="Email" name="email" value={email} onChange={this.handleChange} />
-          <input type="text" pattern="[0-9]{5}"placeholder="Zipcode" name="zipcode" value={zipcode} onChange={this.handleChange} />
-          <Link to="/users" onClick={this.handleSubmit}>Signup</Link>
+      <div className="user-creation">
+        <form className="user-creation--form">
+          <input type="text" placeholder="Name" name="name" value={name} onChange={this.handleChange} className="user-creation--field" />
+          <input type="text" placeholder="Email" name="email" value={email} onChange={this.handleChange} className="user-creation--field" />
+          <input type="text" pattern="[0-9]{5}"placeholder="Zipcode" name="zipcode" value={zipcode} onChange={this.handleChange} className="user-creation--field" />
+          <Link to="/users" onClick={this.handleSubmit} className="user-creation--button">Signup</Link>
         </form>
         { registering &&
           <div>Registering user</div>
@@ -61,6 +62,6 @@ function mapStateToProps(state) {
     registering
   };
 }
-const connectedSignUpForm = connect(mapStateToProps)(SignUpForm);
+const connectedUserCreationForm = connect(mapStateToProps)(UserCreationForm);
 
-export { connectedSignUpForm as SignUpForm };
+export { connectedUserCreationForm as UserCreationForm };
