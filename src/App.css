@@ -1,12 +1,10 @@
 .donate--container {
   display: grid;
-  height: 100vh;
   grid-template-areas: 
     'header header header header header'
     'left main main main right'
     'footer footer footer footer footer';
   grid-gap: 10px;
-  padding: 10px;
-  background-color: #2196F3;
+  min-height: 100vh;
 }
 

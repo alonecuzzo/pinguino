@@ -1,0 +1,46 @@
+.user-list {
+  grid-area: main;
+}
+
+.user-item {
+  display: flex;
+  text-decoration: none;
+  border: 1px solid black;
+  margin: 0 0 10px;
+  background-color: white;
+}
+
+.user-item__content {
+  display: flex;
+  flex-direction: row;
+  width: 400px;
+}
+
+.user-item__left {
+  display: flex;
+  padding: 10px;
+}
+
+.user-item__right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.user-item__avatar {
+  padding: 10px;
+  border-radius: 50%;
+  border: 1px solid red;
+  background-color: red;
+  color: white;
+  margin: 0 10px 0 0;
+}
+
+.user-item__name {
+  font-weight: 700; 
+}
+
+.user-item__zipcode {
+  font-size: 13px; 
+  color: #aaa;
+}
