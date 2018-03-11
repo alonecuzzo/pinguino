@@ -46,7 +46,7 @@ class UserCreationForm extends React.Component {
           <input type="text" placeholder="Name" name="name" value={name} onChange={this.handleChange} className="user-creation--field" />
           <input type="text" placeholder="Email" name="email" value={email} onChange={this.handleChange} className="user-creation--field" />
           <input type="text" pattern="[0-9]{5}"placeholder="Zipcode" name="zipcode" value={zipcode} onChange={this.handleChange} className="user-creation--field" />
-          <Link to="/users" onClick={this.handleSubmit} className="user-creation--button">Signup</Link>
+          <Link to="users" onClick={this.handleSubmit} className="user-creation--button">Create User</Link>
         </form>
         { registering &&
           <div>Registering user</div>
