@@ -5,13 +5,13 @@ const initialState = {
   users: []
 };
 
-export function signup(state=initialState, action) {
+export function rootReducer(state=initialState, action) {
   switch (action.type) {
-    case actionType.SIGNUP_USER_REQUEST:
+    case actionType.USER_CREATION_REQUEST:
       return { registering: true };
-    case actionType.SIGNUP_USER_SUCCESS:
+    case actionType.USER_CREATION_SUCCESS:
       return { registering: false };
-    case actionType.SIGNUP_USER_FAILURE:
+    case actionType.USER_CREATION_FAILURE:
       return { registering: false };
     case actionType.GET_USERS_REQUEST:
       return { users: []};

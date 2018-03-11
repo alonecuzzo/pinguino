@@ -1,9 +1,9 @@
 export const service = {
-  signUp,
+  userCreation,
   getUsers
 };
 
-function signUp(user) {
+function userCreation(user) {
   const requestOpts = {
     method: 'POST',
     body: JSON.stringify(user)

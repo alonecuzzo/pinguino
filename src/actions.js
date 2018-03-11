@@ -2,9 +2,9 @@ import { service } from './service';
 
 //Action Types
 export const actionType = {
-  SIGNUP_USER_REQUEST: 'SIGNUP_USER_REQUEST',
-  SIGNUP_USER_SUCCESS: 'SIGNUP_USER_SUCCESS',
-  SIGNUP_USER_FAILURE: 'SIGNUP_USER_FAILURE',
+  USER_CREATION_REQUEST: 'USER_CREATION_REQUEST',
+  USER_CREATION_SUCCESS: 'USER_CREATION_SUCCESS',
+  USER_CREATION_FAILURE: 'USER_CREATION_FAILURE',
   GET_USERS_REQUEST: 'GET_USERS_REQUEST',
   GET_USERS_SUCCESS: 'GET_USERS_SUCCESS',
   GET_USERS_FAILURE: 'GET_USERS_FAILURE'
@@ -12,45 +12,45 @@ export const actionType = {
 
 //Action Creators
 export const actions = {
-  signUp,
-  signUpRequest,
-  signUpSuccess,
-  signUpFailure,
+  userCreation,
+  userCreationRequest,
+  userCreationSuccess,
+  userCreationFailure,
   getUsers,
   getUsersRequest,
   getUsersSuccess,
   getUsersFailure
 };
 
-function signUp(user) {
+function userCreation(user) {
   return dispatch => {
-    dispatch(actions.signUpRequest({ user }));
-    service.signUp(user)
+    dispatch(actions.userCreationRequest({ user }));
+    service.userCreation(user)
       .then(
         user => {
-          dispatch(actions.signUpSuccess());
+          dispatch(actions.userCreationSuccess());
         },
         error => {
-          dispatch(actions.signUpFailure());
+          dispatch(actions.userCreationFailure());
         }
       );
   }
 } 
 
-function signUpRequest(user) {
+function userCreationRequest(user) {
     console.log('action request');
   return { 
-    type: actionType.SIGNUP_USER_REQUEST,
+    type: actionType.USER_CREATION_REQUEST,
     payload: {
       username: user.name
     }
   };
 }
 
-function signUpSuccess(userId, response) {
+function userCreationSuccess(userId, response) {
     console.log('action success');
   return { 
-    type: actionType.SIGNUP_USER_SUCCESS,
+    type: actionType.USER_CREATION_SUCCESS,
     payload: {
       userId: userId,
       response: response
@@ -58,10 +58,10 @@ function signUpSuccess(userId, response) {
   };
 }
 
-function signUpFailure() {
+function userCreationFailure() {
     console.log('action fail');
   return { 
-    type: actionType.SIGNUP_USER_FAILURE,
+    type: actionType.USER_CREATION_FAILURE,
     payload: new Error(),
     error: true
   };
