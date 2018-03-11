@@ -1,6 +1,9 @@
 import React from 'react';
 import { actions } from './actions';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { UserItem } from './UserItem';
+import UserList from './UserList.css';
 
 class UserListPage extends React.Component {
   componentDidMount() {
@@ -10,24 +13,28 @@ class UserListPage extends React.Component {
   render() {
     const { users } = this.props;
     return (
-      <div>
-      {users.length &&
-        <ul>
-          {users.map((user) => 
-            <li key={user.id}>
-              {user.name}
-            </li>
-          )}
-        </ul>
-      }
-    </div>
+      <div className="user-list">
+      {users.length && users.map((user) => 
+          <Link to="/usermap" key={user.id} class="user-item">
+            <div className="user-item__content">
+              <div className="user-item__left">
+                <span className="user-item__avatar">ZE</span>
+              </div>
+              <div className="user-item__right">
+                <div className="user-item__name">{user.name}</div>
+                <div className="user-item__zipcode">{user.zipcode}</div>
+              </div>
+            </div>
+          </Link>
+      //<UserItem username={user.name}/>
+      )}
+      </div>
     );
   }
 }
 
 function mapStateToProps(state) {
-  console.log(state);
-  const { users } = state;
+const { users } = state;
   return {
     users
   };
