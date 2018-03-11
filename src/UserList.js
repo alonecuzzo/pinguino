@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { UserItem } from './UserItem';
 import UserList from './UserList.css';
 
-class UserListPage extends React.Component {
+class UserList extends React.Component {
   componentDidMount() {
     this.props.dispatch(actions.getUsers());
   }
@@ -40,6 +40,6 @@ const { users } = state;
   };
 }
 
-const connectedUserListPage = connect(mapStateToProps)(UserListPage);
+const connectedUserList = connect(mapStateToProps)(UserList);
 
-export { connectedUserListPage as UserListPage};
+export { connectedUserList as UserList};
