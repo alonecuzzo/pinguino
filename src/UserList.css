@@ -29,14 +29,15 @@
 .user-item__avatar {
   padding: 10px;
   border-radius: 50%;
-  border: 1px solid #ef5f3c;
-  background-color: #ef5f3c;
+  border: 1px solid #F27281;
+  background-color: #F27281;
   color: white;
   margin: 0 10px 0 0;
 }
 
 .user-item__name {
   font-weight: 700; 
+  color: #464D59;
 }
 
 .user-item__zipcode {
