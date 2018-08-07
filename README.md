@@ -13,7 +13,9 @@ Web application using React. Shows classroom projects you can donate to based on
 1. Clone repo
 2. Run `yarn start`
 
-### Spec
+### Dev Notes
+
+#### Spec
 - Create Signup Page
 - Store User in local storage[?]
 - Create User List Page
@@ -24,20 +26,20 @@ Web application using React. Shows classroom projects you can donate to based on
 - Tests!
 - Should I use material design? - yes!
 
-### Assumptions
+#### Assumptions
 - Limited zipcode to 5 numbers ranging from 0-9 assuming we only want US zipcodes.
 - Since the the codebase is pretty small, I opted to use string literals for action types. In larger settings, it'd be better to abstract it out into a separate module.
 - HTML form elements maintain their own state, but since we want React state to be the "source of truth" we'll use controller components. 
 
-### To-do
+#### To-do
 - Clean up directories
 - Rename SignUpForm to UserCreationPage
 - Give credits to http://jasonwatmore.com/
 
-### Notes
+#### Notes
 - Used create-react-app for boilerplate
 
-### Execution Plan
+#### Execution Plan
 - create user creation page (medium)
 - create mock backend to store data to local storage (medium)
 - implement redux + middleware to dispatch async actions (large)
@@ -51,7 +53,7 @@ Web application using React. Shows classroom projects you can donate to based on
 - Cleanup directories and naming (small)
 - Cleanup README (small)
 
-### Execution Notes
+#### Execution Notes
 03/04/18
 Goal: Signup form submission with user data stored in localstorage
 
