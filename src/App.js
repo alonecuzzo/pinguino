@@ -9,9 +9,16 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div className="donate--container">
+        <div className="pinguino--app">
+          <header className="pinguino--header">
+            <div className="pinguino--logo"></div>
+            <div className="pinguino--name">PINGUINO</div>
+          </header>
           <Route exact path="/" component={UserCreationForm} />
           <Route path="/users" component={UserList} />
+          <footer className="pinguino--footer">
+            <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Penguin">Penguin</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+          </footer>
         </div>
       </Router>
     );

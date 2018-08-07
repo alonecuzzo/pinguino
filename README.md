@@ -36,7 +36,7 @@ Web application using React. Shows classroom projects you can donate to based on
 - ![#F7D88B](https://placehold.it/15/F7D88B/000000?text=+) `#F7D88B`
 - ![#3F4550](https://placehold.it/15/3F4550/000000?text=+) `#3F4550`
 - ![#464D59](https://placehold.it/15/464D59/000000?text=+) `#464D59`
-- ![#E5E5E5](https://placehold.it/15/E5E5E5/000000?text=+) `#E5E5E5`
+- ![#C7C9CD](https://placehold.it/15/C7C9CD/000000?text=+) `#C7C9CD`
 
 Light Gray: 
 
