@@ -15,7 +15,7 @@ class UserList extends React.Component {
     return (
       <div className="user-list">
       {users.length && users.map((user) => 
-          <Link to="/usermap" key={user.id} class="user-item">
+          <Link to="/usermap" key={user.id} className="user-item">
             <div className="user-item__content">
               <div className="user-item__left">
                 <span className="user-item__avatar">ZE</span>
