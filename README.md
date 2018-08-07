@@ -31,6 +31,15 @@ Web application using React. Shows classroom projects you can donate to based on
 - Since the the codebase is pretty small, I opted to use string literals for action types. In larger settings, it'd be better to abstract it out into a separate module.
 - HTML form elements maintain their own state, but since we want React state to be the "source of truth" we'll use controller components. 
 
+#### Color Palette
+- ![#F27281](https://placehold.it/15/F27281/000000?text=+) `#F27281`
+- ![#F7D88B](https://placehold.it/15/F7D88B/000000?text=+) `#F7D88B`
+- ![#3F4550](https://placehold.it/15/3F4550/000000?text=+) `#3F4550`
+- ![#464D59](https://placehold.it/15/464D59/000000?text=+) `#464D59`
+- ![#E5E5E5](https://placehold.it/15/E5E5E5/000000?text=+) `#E5E5E5`
+
+Light Gray: 
+
 #### To-do
 - Clean up directories
 - Rename SignUpForm to UserCreationPage
