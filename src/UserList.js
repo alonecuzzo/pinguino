@@ -2,8 +2,8 @@ import React from 'react';
 import { actions } from './actions';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { UserItem } from './UserItem';
-import UserList from './UserList.css';
+//import { UserItem } from './UserItem';
+import './UserList.css';
 
 class UserList extends React.Component {
   componentDidMount() {
