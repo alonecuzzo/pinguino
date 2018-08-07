@@ -1,5 +1,5 @@
 # Pinguino
-Find and support a classroom project near you. [[Code Challenge](../../instructions.md) | Empatico]
+Find and support a classroom project near you. [[Code Challenge](instructions.md) | Empatico]
 
 ### Description
 Web application using React. Shows classroom projects you can donate to based on your location.
