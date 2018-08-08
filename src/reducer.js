@@ -2,7 +2,8 @@ import { actionType } from './actions';
 
 const initialState = {
   registering: false,
-  users: []
+  users: [],
+  selectedUser: {}
 };
 
 export function rootReducer(state=initialState, action) {
@@ -19,6 +20,8 @@ export function rootReducer(state=initialState, action) {
       return { users: action.users };
     case actionType.GET_USERS_FAILURE:
       return { users: [] };
+    case actionType.GET_USER_MAP:
+      return { selectedUser: action.user };
     default:
       return state;
   }

@@ -7,7 +7,8 @@ export const actionType = {
   USER_CREATION_FAILURE: 'USER_CREATION_FAILURE',
   GET_USERS_REQUEST: 'GET_USERS_REQUEST',
   GET_USERS_SUCCESS: 'GET_USERS_SUCCESS',
-  GET_USERS_FAILURE: 'GET_USERS_FAILURE'
+  GET_USERS_FAILURE: 'GET_USERS_FAILURE',
+  GET_USER_MAP: 'GET_USER_MAP'
 }
 
 //Action Creators
@@ -19,7 +20,8 @@ export const actions = {
   getUsers,
   getUsersRequest,
   getUsersSuccess,
-  getUsersFailure
+  getUsersFailure,
+  getUserMap
 };
 
 function userCreation(user) {
@@ -108,5 +110,13 @@ function getUsersFailure() {
     payload: {
       error: new Error()
     }
+  };
+}
+
+function getUserMap(props) {
+  console.log('get user map');
+  return {
+    type: actionType.GET_USER_MAP,
+    user: props.location.state.user
   };
 }

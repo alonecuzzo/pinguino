@@ -18,7 +18,11 @@ class UserList extends React.Component {
     return (
       <div className="user-list">
       {users !== undefined && users.map((user) => 
-          <Link to="/usermap" key={user.id} className="user-item">
+          <Link to={{
+            pathname: '/usermap',
+            hash: `#${user.id}`,
+            state: {user}
+          }} key={user.id} className="user-item">
             <div className="user-item__content">
               <div className="user-item__left">
                 <span className="user-item__avatar">ZE</span>
@@ -37,7 +41,7 @@ class UserList extends React.Component {
 }
 
 function mapStateToProps(state) {
-const { users } = state;
+  const { users } = state;
   return {
     users
   };
