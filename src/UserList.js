@@ -6,15 +6,18 @@ import { Link } from 'react-router-dom';
 import './UserList.css';
 
 class UserList extends React.Component {
-  componentDidMount() {
-    this.props.dispatch(actions.getUsers());
+
+  constructor(props) {
+    super(props);
+    props.dispatch(actions.getUsers());
   }
 
   render() {
     const { users } = this.props;
+    console.log('Render');
     return (
       <div className="user-list">
-      {users.length && users.map((user) => 
+      {users !== undefined && users.map((user) => 
           <Link to="/usermap" key={user.id} className="user-item">
             <div className="user-item__content">
               <div className="user-item__left">
