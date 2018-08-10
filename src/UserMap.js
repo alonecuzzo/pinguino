@@ -11,13 +11,16 @@ class UserMap extends React.Component {
 
   render() {
     let { selectedUser } = this.props;
-    let user = selectedUser.user;
+    let user = selectedUser;
+    console.log("RENDERING USER MAP");
     console.log(this.props);
-    console.log(selectedUser);
-    console.log(user);
+    //console.log(selectedUser);
+    //console.log(user);
     return (
       <div className="user-map">
-        <div className="user-map__name">{user.name}</div>
+        {user !== undefined &&
+          <div className="user-map__name">{user.name}</div>
+        }
       </div>
     )
   }
