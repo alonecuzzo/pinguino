@@ -8,7 +8,10 @@ export const actionType = {
   GET_USERS_REQUEST: 'GET_USERS_REQUEST',
   GET_USERS_SUCCESS: 'GET_USERS_SUCCESS',
   GET_USERS_FAILURE: 'GET_USERS_FAILURE',
-  GET_USER_MAP: 'GET_USER_MAP'
+  GET_USER_MAP: 'GET_USER_MAP',
+  GET_USER_MAP_REQUEST: 'GET_USER_MAP_REQUEST',
+  GET_USER_MAP_SUCCESS: 'GET_USER_MAP_SUCCESS',
+  GET_USER_MAP_FAILURE: 'GET_USER_MAP_FAILURE'
 }
 
 //Action Creators
@@ -21,7 +24,10 @@ export const actions = {
   getUsersRequest,
   getUsersSuccess,
   getUsersFailure,
-  getUserMap
+  getUserMap,
+  getUserMapRequest,
+  getUserMapSuccess,
+  getUserMapFailure
 };
 
 function userCreation(user) {
@@ -95,7 +101,6 @@ function getUsersRequest() {
 }
 
 function getUsersSuccess(users) {
-  console.log(users);
   console.log('get users success');
   return {
     type: actionType.GET_USERS_SUCCESS,
@@ -115,8 +120,42 @@ function getUsersFailure() {
 
 function getUserMap(props) {
   console.log('get user map');
+  return dispatch => {
+    dispatch(actions.getUserMapRequest(props));
+    service.getUserMapData()
+      .then(
+        userMap => {
+          dispatch(actions.getUserMapSuccess());
+        },
+        error => {
+          dispatch(actions.getUserMapFailure());
+        }
+      );
+  }
+}
+
+function getUserMapRequest(props) {
+  console.log('get user map request');
   return {
-    type: actionType.GET_USER_MAP,
+    type: actionType.GET_USER_MAP_REQUEST,
     user: props.location.state.user
+  };
+}
+
+function getUserMapSuccess(props) {
+  console.log('get user map success');
+  return {
+    type: actionType.GET_USER_MAP_SUCCESS,
+    user: props.location.state.user
+  };
+}
+
+function getUserMapFailure(props) {
+  console.log('get user map failure');
+  return {
+    type: actionType.GET_USER_MAP_FAILURE,
+    payload: {
+      error: new Error()
+    }
   };
 }

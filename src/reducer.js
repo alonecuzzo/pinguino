@@ -22,6 +22,12 @@ export function rootReducer(state=initialState, action) {
       return { users: [] };
     case actionType.GET_USER_MAP:
       return { selectedUser: action.user };
+    case actionType.GET_USER_MAP_REQUEST:
+      return { requestingMap: true };
+    case actionType.GET_USER_MAP_SUCCESS:
+      return { requestingMap: false };
+    case actionType.GET_USER_MAP_FAILURE:
+      return { requestingMap: false };
     default:
       return state;
   }

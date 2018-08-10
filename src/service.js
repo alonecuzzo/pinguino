@@ -1,6 +1,7 @@
 export const service = {
   userCreation,
-  getUsers
+  getUsers,
+  getUserMapData
 };
 
 function userCreation(user) {
@@ -26,4 +27,20 @@ function getUsers() {
   return fetch('users', requestOpts).then((response) => {
     return response.json();
   });
+}
+
+function getUserMapData(id) {
+  const requestOpts = {
+    method: 'GET',
+    body: {'id': id}
+  };
+
+  return fetch('map', requestOpts).then((response) => {
+    if (!response.ok) {
+      return Promise.reject(response.statusText);
+    }
+  
+    return response.json();
+  });
+
 }

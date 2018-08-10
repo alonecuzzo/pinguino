@@ -27,6 +27,18 @@ export function initializeMockBackend() {
             ok: true, 
             json: () => users 
           });
+        } else if (url.endsWith('map') && opts.method === 'GET') {
+          let userId = JSON.parse(opts.body.id);
+
+          if (!userId || userIdExists(userId)) {
+            reject('Invalid ID supplied');
+          } else {
+            resolve({ 
+              ok: true, 
+              json: () => ({'a': 'a'})
+            });
+          }
+          
         }
 
         originalFetch(url, opts).then(response => resolve(response));
@@ -34,6 +46,11 @@ export function initializeMockBackend() {
       }, 500);
     });
   }
+}
+
+function userIdExists(id) {
+  const userExists = users.filter(user => { return user.id === id });
+  return userExists.length;
 }
 
 function isDuplicateUser(newUser) {
