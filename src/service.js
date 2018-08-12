@@ -1,3 +1,5 @@
+import fetchJsonp from 'fetch-jsonp';
+
 export const service = {
   userCreation,
   getUsers,
@@ -30,17 +32,20 @@ function getUsers() {
 }
 
 function getUserMapData(id) {
-  const requestOpts = {
-    method: 'GET',
-    body: {'id': id}
-  };
+  
+  const donorChooseUrl = 'https://api.donorschoose.org/common/json_feed.html?zip=11249&APIKey=ef4uju946azk';
 
-  return fetch('map', requestOpts).then((response) => {
+  fetchJsonp(donorChooseUrl)
+    .then(response => response.json())
+    .then(response => console.log(response))
+    .catch(error => console.log('error:', error));
+
+  /*return fetch('map', requestOpts).then((response) => {
     if (!response.ok) {
       return Promise.reject(response.statusText);
     }
   
     return response.json();
-  });
+  });*/
 
 }

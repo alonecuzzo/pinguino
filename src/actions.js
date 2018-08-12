@@ -123,14 +123,14 @@ function getUserMap(props) {
   return dispatch => {
     dispatch(actions.getUserMapRequest(props));
     service.getUserMapData()
-      .then(
+      /*.then(
         userMap => {
           dispatch(actions.getUserMapSuccess());
         },
         error => {
           dispatch(actions.getUserMapFailure());
         }
-      );
+      );*/
   }
 }
 
