@@ -1,6 +1,7 @@
 import React from 'react';
 import { actions } from './actions';
 import { connect } from 'react-redux';
+import { MapWrapper } from './MapWrapper';
 import './UserMap.css';
 
 class UserMap extends React.Component {
@@ -20,6 +21,7 @@ class UserMap extends React.Component {
             <div className="user-map__zipcode">{user.zipcode}</div>
           </div>
         }
+        <MapWrapper />
       </div>
     )
   }
