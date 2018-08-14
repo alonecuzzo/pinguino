@@ -1,4 +1,5 @@
 import fetchJsonp from 'fetch-jsonp';
+import { getFeatureCollection } from './feature';
 
 export const service = {
   userCreation,
@@ -37,15 +38,10 @@ function getUserMapData(id) {
 
   fetchJsonp(donorChooseUrl)
     .then(response => response.json())
-    .then(response => console.log(response))
+    .then(response => { 
+      console.log(response);
+      const collection = getFeatureCollection(response);
+      console.log(collection);
+    })
     .catch(error => console.log('error:', error));
-
-  /*return fetch('map', requestOpts).then((response) => {
-    if (!response.ok) {
-      return Promise.reject(response.statusText);
-    }
-  
-    return response.json();
-  });*/
-
 }
