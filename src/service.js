@@ -36,12 +36,17 @@ function getUserMapData(id) {
   
   const donorChooseUrl = 'https://api.donorschoose.org/common/json_feed.html?zip=11249&APIKey=ef4uju946azk';
 
-  fetchJsonp(donorChooseUrl)
+  const theCollection = fetchJsonp(donorChooseUrl)
     .then(response => response.json())
     .then(response => { 
       console.log(response);
       const collection = getFeatureCollection(response);
       console.log(collection);
+      return collection;
     })
     .catch(error => console.log('error:', error));
+  return Promise.resolve({
+    ok: true,
+    json: () => theCollection
+  });
 }

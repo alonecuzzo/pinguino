@@ -3,7 +3,8 @@ import { actionType } from './actions';
 const initialState = {
   registering: false,
   users: [],
-  selectedUser: {}
+  selectedUser: {},
+  geoJSON: {}
 };
 
 export function rootReducer(state=initialState, action) {
@@ -25,7 +26,7 @@ export function rootReducer(state=initialState, action) {
     case actionType.GET_USER_MAP_REQUEST:
       return { requestingMap: true };
     case actionType.GET_USER_MAP_SUCCESS:
-      return { requestingMap: false };
+      return { requestingMap: false, geoJSON: action.data };
     case actionType.GET_USER_MAP_FAILURE:
       return { requestingMap: false };
     default:

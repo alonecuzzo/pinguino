@@ -18,10 +18,12 @@ class MapWrapper extends React.Component {
     const center = new maps.LatLng(40.6946, -73.9904);
     const mapConfig = {
       center: center,
-      zoom: 11
+      zoom: 12
     };
 
     this.map = new maps.Map(node, mapConfig);
+    console.log(this.props.geoJSON);
+    this.map.data.loadGeoJson(this.props.geoJSON);
   }
 
   render() {
@@ -34,9 +36,9 @@ class MapWrapper extends React.Component {
 }
 
 function mapStateToProps(state) {
-  const { selectedUser } = state;
+  const { geoJSON } = state;
   return {
-    selectedUser
+    geoJSON
   };
 }
 

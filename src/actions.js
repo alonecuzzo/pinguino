@@ -123,14 +123,14 @@ function getUserMap(props) {
   return dispatch => {
     dispatch(actions.getUserMapRequest(props));
     service.getUserMapData()
-      /*.then(
+      .then(
         userMap => {
-          dispatch(actions.getUserMapSuccess());
+          dispatch(actions.getUserMapSuccess(userMap));
         },
         error => {
           dispatch(actions.getUserMapFailure());
         }
-      );*/
+      );
   }
 }
 
@@ -142,11 +142,11 @@ function getUserMapRequest(props) {
   };
 }
 
-function getUserMapSuccess(props) {
+function getUserMapSuccess(data) {
   console.log('get user map success');
   return {
     type: actionType.GET_USER_MAP_SUCCESS,
-    user: props.location.state.user
+    data: data
   };
 }
 
