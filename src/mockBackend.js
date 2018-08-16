@@ -5,7 +5,7 @@ export function initializeMockBackend() {
   window.fetch = function(url, opts) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        if (url.endsWith('user/signup') && opts.method === 'POST') {
+        if (url.endsWith('user/signup')) {
           let newUser = JSON.parse(opts.body);
 
           if (isDuplicateUser(newUser)) {
@@ -22,12 +22,12 @@ export function initializeMockBackend() {
           }
 
           return;
-        } else if (url.endsWith('users') && opts.method === 'GET') {
+        } else if (url.endsWith('users')) {
           resolve({ 
             ok: true, 
             json: () => users 
           });
-        } else if (url.endsWith('map') && opts.method === 'GET') {
+        } else if (url.endsWith('usermap')) {
           let userId = JSON.parse(opts.body.id);
 
           if (!userId || userIdExists(userId)) {
