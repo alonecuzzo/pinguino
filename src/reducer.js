@@ -1,7 +1,7 @@
 import { actionType } from './actions';
 
 const initialState = {
-  registering: false,
+  creatingUser: false,
   loadingUsers: false,
   requestingMapData: false,
   users: [],
@@ -13,15 +13,15 @@ export function rootReducer(state=initialState, action) {
   switch (action.type) {
     case actionType.USER_CREATION_REQUEST:
       return Object.assign({}, state, {
-        registering: true 
+        creatingUser: true 
       });
     case actionType.USER_CREATION_SUCCESS:
       return Object.assign({}, state, {
-        registering: false 
+        creatingUser: false 
       });
     case actionType.USER_CREATION_FAILURE:
       return Object.assign({}, state, { 
-        registering: false 
+        creatingUser: false 
       });
     case actionType.GET_USERS_REQUEST:
       return Object.assign({}, state, { 
