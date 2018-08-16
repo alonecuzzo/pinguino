@@ -2,6 +2,8 @@ import { actionType } from './actions';
 
 const initialState = {
   registering: false,
+  loadingUsers: false,
+  requestingMapData: false,
   users: [],
   selectedUser: {},
   geoJSON: {}
@@ -10,25 +12,44 @@ const initialState = {
 export function rootReducer(state=initialState, action) {
   switch (action.type) {
     case actionType.USER_CREATION_REQUEST:
-      return { registering: true };
+      return Object.assign({}, state, {
+        registering: true 
+      });
     case actionType.USER_CREATION_SUCCESS:
-      return { registering: false };
+      return Object.assign({}, state, {
+        registering: false 
+      });
     case actionType.USER_CREATION_FAILURE:
-      return { registering: false };
+      return Object.assign({}, state, { 
+        registering: false 
+      });
     case actionType.GET_USERS_REQUEST:
-      return { users: []};
+      return Object.assign({}, state, { 
+        loadingUsers: true
+      });
     case actionType.GET_USERS_SUCCESS:
-      return { users: action.users };
+      return Object.assign({}, state, {
+        loadingUsers: false,
+        users: action.users
+      });
     case actionType.GET_USERS_FAILURE:
-      return { users: [] };
-    case actionType.GET_USER_MAP:
-      return { selectedUser: action.user };
+      return Object.assign({}, state, {
+        loadingUsers: false
+      });
     case actionType.GET_USER_MAP_REQUEST:
-      return { requestingMap: true };
+      return Object.assign({}, state, { 
+        requestingMapData: true,
+        selectedUser: action.user
+      });
     case actionType.GET_USER_MAP_SUCCESS:
-      return { requestingMap: false, geoJSON: action.data };
+      return Object.assign({}, state, { 
+        requestingMapData: false, 
+        geoJSON: action.data 
+      });
     case actionType.GET_USER_MAP_FAILURE:
-      return { requestingMap: false };
+      return Object.assign({}, state, {
+        requestingMapData: false 
+      });
     default:
       return state;
   }
