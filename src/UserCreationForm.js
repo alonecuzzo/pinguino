@@ -37,7 +37,7 @@ class UserCreationForm extends React.Component {
   }
 
   render() {
-    const { registering } = this.props;
+    const { creatingUser } = this.props;
     const { name, email, zipcode } = this.state.user;
 
     return (
@@ -48,7 +48,7 @@ class UserCreationForm extends React.Component {
           <input type="text" pattern="[0-9]{5}"placeholder="Zipcode" name="zipcode" value={zipcode} onChange={this.handleChange} className="user-creation--field" />
           <Link to="users" onClick={this.handleSubmit} className="user-creation--button">Create User</Link>
         </form>
-        { registering &&
+        { creatingUser &&
           <div>Registering user</div>
         }
       </div>
@@ -57,9 +57,9 @@ class UserCreationForm extends React.Component {
 }
 
 function mapStateToProps(state) {
-  const { registering } = state;
+  const { creatingUser } = state;
   return {
-    registering
+    creatingUser
   };
 }
 const connectedUserCreationForm = connect(mapStateToProps)(UserCreationForm);
