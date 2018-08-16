@@ -124,8 +124,8 @@ function getUserMap(props) {
     dispatch(actions.getUserMapRequest(props));
     service.getUserMapData()
       .then(
-        userMap => {
-          dispatch(actions.getUserMapSuccess(userMap));
+        response => {
+          dispatch(actions.getUserMapSuccess(response));
         },
         error => {
           dispatch(actions.getUserMapFailure());

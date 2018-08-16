@@ -12,7 +12,7 @@ class MapWrapper extends React.Component {
   componentDidMount() {
     const maps = window.google.maps;
     const mapRef = this.refs.map;
-    console.log(mapRef);
+    const { mapData } = this.props; 
     const node = ReactDOM.findDOMNode(mapRef);
     //const center = new maps.LatLng(this.props.lat, this.props.lng);
     const center = new maps.LatLng(40.6946, -73.9904);
@@ -21,10 +21,16 @@ class MapWrapper extends React.Component {
       zoom: 12
     };
 
-    this.map = new maps.Map(node, mapConfig);
-    console.log(this.props.geoJSON);
-    this.map.data.loadGeoJson(this.props.geoJSON);
+    const map = new maps.Map(node, mapConfig);
+    mapData.map(proposal => {
+      const latLng = new maps.LatLng(proposal.coordinates);
+      const marker = new maps.Marker({
+        position: latLng,
+        map: map
+      });
+    });
   }
+
 
   render() {
     return (
@@ -36,9 +42,9 @@ class MapWrapper extends React.Component {
 }
 
 function mapStateToProps(state) {
-  const { geoJSON } = state;
+  const { mapData } = state;
   return {
-    geoJSON
+    mapData
   };
 }
 

@@ -1,5 +1,5 @@
 import fetchJsonp from 'fetch-jsonp';
-import { getFeatureCollection } from './feature';
+import { parseMapData } from './feature';
 
 export const service = {
   userCreation,
@@ -36,17 +36,8 @@ function getUserMapData(id) {
   
   const donorChooseUrl = 'https://api.donorschoose.org/common/json_feed.html?zip=11249&APIKey=ef4uju946azk';
 
-  const theCollection = fetchJsonp(donorChooseUrl)
+  return fetchJsonp(donorChooseUrl)
     .then(response => response.json())
-    .then(response => { 
-      console.log(response);
-      const collection = getFeatureCollection(response);
-      console.log(collection);
-      return collection;
-    })
+    .then(response => parseMapData(response))
     .catch(error => console.log('error:', error));
-  return Promise.resolve({
-    ok: true,
-    json: () => theCollection
-  });
 }

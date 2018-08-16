@@ -4,9 +4,10 @@ const initialState = {
   creatingUser: false,
   loadingUsers: false,
   requestingMapData: false,
+  mapDataRetrieved: false,
   users: [],
   selectedUser: {},
-  geoJSON: {}
+  mapData: {}
 };
 
 export function rootReducer(state=initialState, action) {
@@ -44,7 +45,8 @@ export function rootReducer(state=initialState, action) {
     case actionType.GET_USER_MAP_SUCCESS:
       return Object.assign({}, state, { 
         requestingMapData: false, 
-        geoJSON: action.data 
+        mapDataRetrieved: true,
+        mapData: action.data 
       });
     case actionType.GET_USER_MAP_FAILURE:
       return Object.assign({}, state, {

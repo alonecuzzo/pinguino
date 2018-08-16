@@ -11,7 +11,7 @@ class UserMap extends React.Component {
   } 
 
   render() {
-    let { selectedUser, requestingMapData } = this.props;
+    let { selectedUser, mapDataRetrieved } = this.props;
     let user = selectedUser;
     return (
       <div className="user-map">
@@ -21,7 +21,7 @@ class UserMap extends React.Component {
             <div className="user-map__zipcode">{user.zipcode}</div>
           </div>
         }
-        { !requestingMapData &&
+        { mapDataRetrieved &&
           <MapWrapper />
         }
       </div>
@@ -30,12 +30,10 @@ class UserMap extends React.Component {
 }
 
 function mapStateToProps(state) {
-  console.log('state');
-  console.log(state);
-  const { selectedUser, requestingMapData } = state;
+  const { selectedUser, mapDataRetrieved } = state;
   return {
     selectedUser,
-    requestingMapData
+    mapDataRetrieved
   };
 }
 

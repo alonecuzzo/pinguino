@@ -1,21 +1,14 @@
-export const getFeatureCollection = function(data) {
+export const parseMapData = function(data) {
   const proposals = data.proposals;
   
-  let features = proposals.map(proposal => {
+  return proposals.map(proposal => {
     return {
-      type: 'Feature',
-      geometry: {
-        type: 'Point',
-        coordinates: [proposal.latitude, proposal.longitude]
+      coordinates: {
+        lat: parseFloat(proposal.latitude),
+        lng: parseFloat(proposal.longitude)
       },
-      properties: {
-        name: proposal.title
-      }
+      name: proposal.title
     };
   });
 
-  return {
-        type: 'FeatureCollection',
-        features: features
-  };
 }
