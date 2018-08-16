@@ -32,9 +32,9 @@ function getUsers() {
   });
 }
 
-function getUserMapData(id) {
+function getUserMapData(zipcode) {
   
-  const donorChooseUrl = 'https://api.donorschoose.org/common/json_feed.html?zip=11249&APIKey=ef4uju946azk';
+  const donorChooseUrl = `https://api.donorschoose.org/common/json_feed.html?zip=${zipcode}&APIKey=ef4uju946azk`;
 
   return fetchJsonp(donorChooseUrl)
     .then(response => response.json())

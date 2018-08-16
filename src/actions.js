@@ -120,9 +120,10 @@ function getUsersFailure() {
 
 function getUserMap(props) {
   console.log('get user map');
+  const selectedUser = props.location.state.user;
   return dispatch => {
-    dispatch(actions.getUserMapRequest(props));
-    service.getUserMapData()
+    dispatch(actions.getUserMapRequest(selectedUser));
+    service.getUserMapData(selectedUser.zipcode)
       .then(
         response => {
           dispatch(actions.getUserMapSuccess(response));
@@ -134,11 +135,11 @@ function getUserMap(props) {
   }
 }
 
-function getUserMapRequest(props) {
+function getUserMapRequest(user) {
   console.log('get user map request');
   return {
     type: actionType.GET_USER_MAP_REQUEST,
-    user: props.location.state.user
+    user: user
   };
 }
 

@@ -14,15 +14,14 @@ class MapWrapper extends React.Component {
     const mapRef = this.refs.map;
     const { mapData } = this.props; 
     const node = ReactDOM.findDOMNode(mapRef);
-    //const center = new maps.LatLng(this.props.lat, this.props.lng);
-    const center = new maps.LatLng(40.6946, -73.9904);
+    const center = new maps.LatLng(mapData.center);
     const mapConfig = {
       center: center,
       zoom: 12
     };
 
     const map = new maps.Map(node, mapConfig);
-    mapData.map(proposal => {
+    mapData.proposals.map(proposal => {
       const latLng = new maps.LatLng(proposal.coordinates);
       const marker = new maps.Marker({
         position: latLng,
@@ -42,9 +41,10 @@ class MapWrapper extends React.Component {
 }
 
 function mapStateToProps(state) {
-  const { mapData } = state;
+  const { mapData, selectedUser } = state;
   return {
-    mapData
+    mapData,
+    selectedUser
   };
 }
 
