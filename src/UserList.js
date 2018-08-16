@@ -14,7 +14,6 @@ class UserList extends React.Component {
 
   render() {
     const { users } = this.props;
-    console.log('Render');
     return (
       <div className="user-list">
       {users !== undefined && users.map((user) => 
