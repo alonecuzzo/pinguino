@@ -2,6 +2,7 @@ import React from 'react';
 import { actions } from './actions';
 import { connect } from 'react-redux';
 import { MapWrapper } from './MapWrapper';
+import { UserItem } from './UserItem';
 import './UserMap.css';
 
 class UserMap extends React.Component {
@@ -16,10 +17,7 @@ class UserMap extends React.Component {
     return (
       <div className="user-map">
         {user !== undefined &&
-          <div>
-            <div className="user-map__name">{user.name}</div>
-            <div className="user-map__zipcode">{user.zipcode}</div>
-          </div>
+          <UserItem user={ user } />
         }
         { mapDataRetrieved &&
           <MapWrapper />
