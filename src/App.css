@@ -5,7 +5,7 @@
     'left main main main right'
     'left main main main right'
     'left main main main right'
-    'footer footer footer footer footer';
+    'left main main main right';
   grid-gap: 10px;
   min-height: 100vh;
 }
@@ -26,18 +26,3 @@
   background: url("./assets/penguin.png") no-repeat center;
   background-size: 50px;
 }
-
-.pinguino--footer {
-  display: flex;
-  grid-area: footer;
-  justify-content: center;
-  align-items: center;
-  border-top: 1px solid #464D59;
-  color: #464D59;
-  font-size: smaller;
-}
-
-.pinguino--footer a {
-  color: #464D59;
-}
-
