@@ -37,10 +37,10 @@ class MapWrapper extends React.Component {
 }
 
 function mapStateToProps(state) {
-  const { mapData, selectedUser } = state;
+  const { selectedUser } = state;
+  const mapData = selectedUser.mapData;
   return {
-    mapData,
-    selectedUser
+    mapData
   };
 }
 

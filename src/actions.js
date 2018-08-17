@@ -36,7 +36,7 @@ function userCreation(user) {
     service.userCreation(user)
       .then(
         user => {
-          dispatch(actions.userCreationSuccess());
+          dispatch(actions.userCreationSuccess(user.id));
         },
         error => {
           dispatch(actions.userCreationFailure());
@@ -46,32 +46,22 @@ function userCreation(user) {
 } 
 
 function userCreationRequest(user) {
-    console.log('action request');
   return { 
     type: actionType.USER_CREATION_REQUEST,
-    payload: {
-      username: user.name
-    }
+    user: user
   };
 }
 
-function userCreationSuccess(userId, response) {
-    console.log('action success');
+function userCreationSuccess(userId) {
   return { 
     type: actionType.USER_CREATION_SUCCESS,
-    payload: {
-      userId: userId,
-      response: response
-    }
+    userId: userId
   };
 }
 
 function userCreationFailure() {
-    console.log('action fail');
   return { 
-    type: actionType.USER_CREATION_FAILURE,
-    payload: new Error(),
-    error: true
+    type: actionType.USER_CREATION_FAILURE
   };
 }
 
@@ -91,17 +81,12 @@ function getUsers() {
 }
 
 function getUsersRequest() {
-  console.log('get users request');
   return {
-    type: actionType.GET_USERS_REQUEST,
-    payload: {
-      response: 'something'
-    }
+    type: actionType.GET_USERS_REQUEST
   };
 }
 
 function getUsersSuccess(users) {
-  console.log('get users success');
   return {
     type: actionType.GET_USERS_SUCCESS,
     users: users
@@ -109,17 +94,12 @@ function getUsersSuccess(users) {
 }
 
 function getUsersFailure() {
-  console.log('get users failure');
   return {
-    type: actionType.GET_USERS_FAILURE,
-    payload: {
-      error: new Error()
-    }
+    type: actionType.GET_USERS_FAILURE
   };
 }
 
 function getUserMap(props) {
-  console.log('get user map');
   const selectedUser = props.location.state.user;
   return dispatch => {
     dispatch(actions.getUserMapRequest(selectedUser));
@@ -136,7 +116,6 @@ function getUserMap(props) {
 }
 
 function getUserMapRequest(user) {
-  console.log('get user map request');
   return {
     type: actionType.GET_USER_MAP_REQUEST,
     user: user
@@ -144,7 +123,6 @@ function getUserMapRequest(user) {
 }
 
 function getUserMapSuccess(data) {
-  console.log('get user map success');
   return {
     type: actionType.GET_USER_MAP_SUCCESS,
     data: data
@@ -152,11 +130,7 @@ function getUserMapSuccess(data) {
 }
 
 function getUserMapFailure(props) {
-  console.log('get user map failure');
   return {
-    type: actionType.GET_USER_MAP_FAILURE,
-    payload: {
-      error: new Error()
-    }
+    type: actionType.GET_USER_MAP_FAILURE
   };
 }

@@ -5,13 +5,13 @@ import { Provider } from 'react-redux';
 import thunkMiddleware from 'redux-thunk';
 import { createStore, applyMiddleware } from 'redux';
 import { render } from 'react-dom';
-import { rootReducer } from './reducer';
+import reducer from './reducers/index';
 import { initializeMockBackend } from './mockBackend';
 
 initializeMockBackend();
 
 let store = createStore(
-    rootReducer,
+    reducer,
     applyMiddleware(thunkMiddleware)
 );
 

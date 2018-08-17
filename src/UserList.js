@@ -31,7 +31,8 @@ class UserList extends React.Component {
 }
 
 function mapStateToProps(state) {
-  const { users } = state;
+  const { userCollection } = state;
+  const users = userCollection.users;
   return {
     users
   };

@@ -12,8 +12,7 @@ class UserMap extends React.Component {
   } 
 
   render() {
-    let { selectedUser, mapDataRetrieved } = this.props;
-    let user = selectedUser;
+    let { user, mapDataRetrieved } = this.props;
     return (
       <div className="user-map">
         {user !== undefined &&
@@ -28,9 +27,12 @@ class UserMap extends React.Component {
 }
 
 function mapStateToProps(state) {
-  const { selectedUser, mapDataRetrieved } = state;
+  const { selectedUser } = state;
+  const user = selectedUser.userData;
+  const mapDataRetrieved = selectedUser.mapDataRetrieved;
+
   return {
-    selectedUser,
+    user,
     mapDataRetrieved
   };
 }
