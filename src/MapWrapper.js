@@ -1,13 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { actions } from './actions';
 import { connect } from 'react-redux';
 import './MapWrapper.css';
 
 class MapWrapper extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   componentDidMount() {
     const maps = window.google.maps;
@@ -23,7 +19,7 @@ class MapWrapper extends React.Component {
     const map = new maps.Map(node, mapConfig);
     mapData.proposals.map(proposal => {
       const latLng = new maps.LatLng(proposal.coordinates);
-      const marker = new maps.Marker({
+      return new maps.Marker({
         position: latLng,
         map: map
       });

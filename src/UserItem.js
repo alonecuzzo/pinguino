@@ -1,6 +1,4 @@
 import React from 'react';
-import { actions } from './actions';
-import { connect } from 'react-redux';
 import './UserItem.css';
 
 class UserItem extends React.Component {
@@ -30,4 +28,4 @@ class UserItem extends React.Component {
   }
 }
 
-export { UserItem as UserItem};
+export { UserItem };
