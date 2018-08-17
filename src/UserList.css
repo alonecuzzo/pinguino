@@ -2,6 +2,11 @@
   grid-area: main;
 }
 
+.user-list__link {
+  display: block;
+  text-decoration: none;
+}
+
 .user-item {
   display: flex;
   text-decoration: none;
