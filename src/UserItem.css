@@ -23,12 +23,13 @@
 }
 
 .user-item__avatar {
-  padding: 10px;
   border-radius: 50%;
   border: 1px solid #F27281;
   background-color: #F27281;
   color: white;
   margin: 0 10px 0 0;
+  padding: 10px;
+  text-transform: uppercase;
 }
 
 .user-item__name {
