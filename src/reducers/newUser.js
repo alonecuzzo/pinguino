@@ -18,7 +18,7 @@ export default function newUser(state = initialState, action){
       return Object.assign({}, state, {
         creating: false,
         created: true,
-        userId: action.userId
+        userData: action.user
       });
     case actionType.USER_CREATION_FAILURE:
       return Object.assign({}, newUser, {

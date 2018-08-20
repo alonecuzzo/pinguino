@@ -1,4 +1,4 @@
-import { service } from './service';
+import Service from './Service';
 
 //Action Types
 export const actionType = {
@@ -17,9 +17,6 @@ export const actionType = {
 //Action Creators
 export const actions = {
   userCreation,
-  userCreationRequest,
-  userCreationSuccess,
-  userCreationFailure,
   getUsers,
   getUsersRequest,
   getUsersSuccess,
@@ -30,45 +27,21 @@ export const actions = {
   getUserMapFailure
 };
 
-function userCreation(user) {
-  return dispatch => {
-    dispatch(actions.userCreationRequest({ user }));
-    service.userCreation(user)
-      .then(
-        user => {
-          dispatch(actions.userCreationSuccess(user.id));
-        },
-        error => {
-          dispatch(actions.userCreationFailure());
-        }
-      );
-  }
-} 
+const service = new Service();
 
-function userCreationRequest(user) {
+function userCreation(user) {
+  console.log('action user creation');
+  const newUser = service.createUser(user)
   return { 
     type: actionType.USER_CREATION_REQUEST,
     user: user
   };
-}
-
-function userCreationSuccess(userId) {
-  return { 
-    type: actionType.USER_CREATION_SUCCESS,
-    userId: userId
-  };
-}
-
-function userCreationFailure() {
-  return { 
-    type: actionType.USER_CREATION_FAILURE
-  };
-}
+} 
 
 function getUsers() {
   return dispatch => {
     dispatch(actions.getUsersRequest());
-    service.getUsers()
+    service.getUserCollection()
       .then(
         users => {
           dispatch(actions.getUsersSuccess(users));
@@ -81,12 +54,14 @@ function getUsers() {
 }
 
 function getUsersRequest() {
+  console.log('action get users request');
   return {
     type: actionType.GET_USERS_REQUEST
   };
 }
 
 function getUsersSuccess(users) {
+  console.log('action get users success');
   return {
     type: actionType.GET_USERS_SUCCESS,
     users: users
@@ -94,6 +69,7 @@ function getUsersSuccess(users) {
 }
 
 function getUsersFailure() {
+  console.log('action get users failure');
   return {
     type: actionType.GET_USERS_FAILURE
   };
@@ -103,7 +79,7 @@ function getUserMap(props) {
   const selectedUser = props.location.state.user;
   return dispatch => {
     dispatch(actions.getUserMapRequest(selectedUser));
-    service.getUserMapData(selectedUser.zipcode)
+   service.getMapData(selectedUser.zipcode)
       .then(
         response => {
           dispatch(actions.getUserMapSuccess(response));

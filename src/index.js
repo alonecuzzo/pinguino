@@ -6,9 +6,6 @@ import thunkMiddleware from 'redux-thunk';
 import { createStore, applyMiddleware } from 'redux';
 import { render } from 'react-dom';
 import reducer from './reducers/index';
-import { initializeMockBackend } from './mockBackend';
-
-initializeMockBackend();
 
 let store = createStore(
     reducer,
