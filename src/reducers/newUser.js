@@ -9,21 +9,11 @@ const initialState = {
 
 export default function newUser(state = initialState, action){
   switch (action.type) {
-    case actionType.USER_CREATION_REQUEST:
-      return Object.assign({}, state, {
-        creating: true,
-        userData: action.user
-      });
-    case actionType.USER_CREATION_SUCCESS:
+    case actionType.USER_CREATED:
       return Object.assign({}, state, {
         creating: false,
         created: true,
         userData: action.user
-      });
-    case actionType.USER_CREATION_FAILURE:
-      return Object.assign({}, newUser, {
-        creating: false,
-        error: true
       });
     default:
     return state;

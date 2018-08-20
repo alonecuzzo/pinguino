@@ -2,9 +2,7 @@ import Service from './Service';
 
 //Action Types
 export const actionType = {
-  USER_CREATION_REQUEST: 'USER_CREATION_REQUEST',
-  USER_CREATION_SUCCESS: 'USER_CREATION_SUCCESS',
-  USER_CREATION_FAILURE: 'USER_CREATION_FAILURE',
+  USER_CREATED: 'USER_CREATED',
   GET_USERS_REQUEST: 'GET_USERS_REQUEST',
   GET_USERS_SUCCESS: 'GET_USERS_SUCCESS',
   GET_USERS_FAILURE: 'GET_USERS_FAILURE',
@@ -33,7 +31,7 @@ function userCreation(user) {
   console.log('action user creation');
   const newUser = service.createUser(user)
   return { 
-    type: actionType.USER_CREATION_REQUEST,
+    type: actionType.USER_CREATED,
     user: user
   };
 } 
