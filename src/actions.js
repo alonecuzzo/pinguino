@@ -14,7 +14,7 @@ export const actionType = {
 
 //Action Creators
 export const actions = {
-  userCreation,
+  createUser,
   getUsers,
   getUsersRequest,
   getUsersSuccess,
@@ -27,12 +27,12 @@ export const actions = {
 
 const service = new Service();
 
-function userCreation(user) {
+function createUser(user) {
   console.log('action user creation');
   const newUser = service.createUser(user)
   return { 
     type: actionType.USER_CREATED,
-    user: user
+    user: newUser
   };
 } 
 

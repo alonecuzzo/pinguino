@@ -27,7 +27,7 @@ class UserCreationForm extends React.Component {
     const newUser = this.state.user;
     const { dispatch } = this.props;
 
-    dispatch(actions.userCreation(newUser));
+    dispatch(actions.createUser(newUser));
   }
 
   handleChange(event) {
