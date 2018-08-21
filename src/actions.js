@@ -1,4 +1,4 @@
-import Service from './Service';
+import Service from './service';
 
 //Action Types
 export const actionType = {
