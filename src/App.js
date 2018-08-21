@@ -17,6 +17,14 @@ class App extends Component {
           <Route exact path="/" component={UserCreationForm} />
           <Route path="/users" component={UserList} />
           <Route path="/usermap" component={UserMap} />
+          {
+            /*
+              Might be cool to set up an API structure that revoles around the user model.
+              I forget the proper cannonical naming of this, but something like:
+              /user/{userid}/map
+              https://hackernoon.com/restful-api-designing-guidelines-the-best-practices-60e1d954e7c9
+            */
+          }
         </div>
       </Router>
     );

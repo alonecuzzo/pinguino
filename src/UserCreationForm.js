@@ -17,10 +17,18 @@ class UserCreationForm extends React.Component {
       submitted: false
     };
 
+    //I was doing this as well but they told me that just declaring the function
+    //using the => operator can work
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  //for example instead of having to bind this in the constructor,
+  //you can declare it as: handleSubmit = (event) => {
+  //also - this is probably more of a style thing but I noticed that some will
+  //prepend a private function with an underscore, and usually leave those at the bottom of the file
+  //and the render usually goes at the top w/ the constructor and public facing functions - more of a
+  //style thing - i'm not sure how common it is
   handleSubmit(event) {
     this.setState({ submitted: true });
 
